@@ -1,49 +1,47 @@
-import React from "react";
-import {Route, Routes} from "react-router-dom"
-import PageLayout from "./pages/PageLayout";
+import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./Layout.jsx";
+// import PageLayout from "./pages/PageLayout.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import RegisterPage from "./pages/RegisterPage.jsx";
+import axios from "axios";
+import { UserContextProvider } from "./UserContext.jsx";
+import PlacesFormPage from "./pages/PlacesFormPage.jsx";
+import PlacePage from "./pages/PlacePage.jsx";
+import AccountPage from "./pages/ProfilePage.jsx";
+import PlacesPage from "./pages/PlacesPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
+import IndexPage from "./pages/IndexPage.jsx";
+import BookingPage from "./pages/BookingPage.jsx";
+import BookingsPage from "./pages/BookingsPage.jsx";
+
+// axios.defaults.baseURL = "http://127.0.0.1:4000";
+// axios.defaults.withCredentials = true;
+axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.withCredentials = true;
 
 const App = () => {
+
   return (
-    <Routes>
-      <Route index element={<PageLayout />} />    
-    </Routes>
-  )
-  
+    <UserContextProvider>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<IndexPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/account" element={<ProfilePage />} />
+          <Route path="/account/bookings/:id" element={<BookingPage />} />
+          <Route path="/account/places" element={<PlacesPage />} />
+          <Route path="/account/places/new" element={<PlacesFormPage />} />
+          <Route path="/account/places/:id" element={<PlacesFormPage />} />
+          <Route path="/place/:id" element={<PlacePage />} />
+          <Route path="account/bookings" element={<BookingsPage />} />
+          <Route path="account/bookings/:id" element={<BookingPage />} />
+        </Route>
+      </Routes>
+    </UserContextProvider>
+  );
 };
 
 export default App;
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
 
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vite.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   )
-// }
-
-// export default App
