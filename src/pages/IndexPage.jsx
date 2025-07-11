@@ -104,32 +104,158 @@ const IndexPage = () => {
   }, []);
 
   return (
-    <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {places.length > 0 &&
-        places.map((place) => (
-          <Link
-            to={`/place/${place._id}`}
-            key={place._id || place.id}
-            className="cursor-pointer"
-          >
-            <div className="bg-gray-500 mb-2 rounded-2xl flex">
-              {place.photos?.[0] && (
-                <img
-                  src={`http://localhost:4000/upload/${place.photos[0]}`}
-                  alt={place.title || "Place"}
-                  className="object-cover aspect-square rounded-2xl w-full"
-                />
-              )}
-            </div>
-            <h2 className="font-bold text-md">{place.address}</h2>
-            <h3 className="text-sm text-gray-500">{place.title}</h3>
-            <div className="mt-1">
-              <span className="font-bold">${place.price} per night</span>
-            </div>
-          </Link>
-        ))}
+    <div className="px-2 md:px-4 lg:px-6 mt-8">
+      <div className="grid gap-x-4 gap-y-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {places.length > 0 &&
+          places.map((place) => (
+            <Link
+              to={`/place/${place._id}`}
+              key={place._id || place.id}
+              className="cursor-pointer"
+            >
+              <div className="bg-gray-500 mb-2 rounded-2xl flex">
+                {place.photos?.[0] && (
+                  <img
+                    src={`http://localhost:4000/upload/${place.photos[0]}`}
+                    alt={place.title || "Place"}
+                    className="object-cover aspect-square rounded-2xl w-full"
+                  />
+                )}
+              </div>
+              <h2 className="font-bold text-md">{place.address}</h2>
+              <h3 className="text-sm text-gray-500">{place.title}</h3>
+              <div className="mt-1">
+                <span className="font-bold">${place.price} per night</span>
+              </div>
+            </Link>
+          ))}
+      </div>
     </div>
   );
 };
 
 export default IndexPage;
+
+
+
+// import { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+
+// const IndexPage = () => {
+//   const [places, setPlaces] = useState([]);
+
+//   useEffect(() => {
+//     axios
+//       .get("/places")
+//       .then((res) => {
+//         setPlaces(res.data);
+//       })
+//       .catch((error) => {
+//         console.error(
+//           "Error fetching places:",
+//           error.response?.data || error.message
+//         );
+//       });
+//   }, []);
+
+//   return (
+//     <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+//       {places.length > 0 &&
+//         places.map((place) => {
+//           const firstPhoto =
+//             place.photos?.general?.[0] || place.photos?.sleeping?.[0] || null;
+
+//           return (
+//             <Link
+//               to={`/place/${place._id}`}
+//               key={place._id}
+//               className="cursor-pointer"
+//             >
+//               <div className="bg-gray-500 mb-2 rounded-2xl overflow-hidden">
+//                 {firstPhoto ? (
+//                   <img
+//                     src={`http://localhost:4000/upload/${firstPhoto}`}
+//                     alt={place.title || "Place"}
+//                     className="object-cover aspect-square w-full"
+//                   />
+//                 ) : (
+//                   <div className="aspect-square flex items-center justify-center text-white bg-gray-400">
+//                     No photo
+//                   </div>
+//                 )}
+//               </div>
+//               <h2 className="font-bold text-md">{place.address}</h2>
+//               <h3 className="text-sm text-gray-500">{place.title}</h3>
+//               <div className="mt-1">
+//                 <span className="font-bold">${place.price} per night</span>
+//               </div>
+//             </Link>
+//           );
+//         })}
+//     </div>
+//   );
+// };
+
+// export default IndexPage;
+
+
+// import { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+
+// const IndexPage = () => {
+//   const [places, setPlaces] = useState([]);
+
+//   useEffect(() => {
+//     axios
+//       .get("/places")
+//       .then((res) => {
+//         setPlaces(res.data);
+//       })
+//       .catch((error) => {
+//         console.error(
+//           "Error fetching places:",
+//           error.response?.data || error.message
+//         );
+//       });
+//   }, []);
+
+//   return (
+//     <div className="mt-8 grid gap-x-6 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+//       {places.length > 0 &&
+//         places.map((place) => {
+//           const firstGeneralPhoto = place.photos?.general?.[0] || null;
+
+//           return (
+//             <Link
+//               to={`/place/${place._id}`}
+//               key={place._id}
+//               className="cursor-pointer"
+//             >
+//               <div className="bg-gray-500 mb-2 rounded-2xl overflow-hidden">
+//                 {firstGeneralPhoto ? (
+//                   <img
+//                     src={`http://localhost:4000/upload/${firstGeneralPhoto}`}
+//                     alt={place.title || "Place"}
+//                     className="object-cover aspect-square w-full"
+//                   />
+//                 ) : (
+//                   <div className="aspect-square flex items-center justify-center text-white bg-gray-400">
+//                     No photo
+//                   </div>
+//                 )}
+//               </div>
+//               <h2 className="font-bold text-md">{place.address}</h2>
+//               <h3 className="text-sm text-gray-500">{place.title}</h3>
+//               <div className="mt-1">
+//                 <span className="font-bold">${place.price} per night</span>
+//               </div>
+//             </Link>
+//           );
+//         })}
+//     </div>
+//   );
+// };
+
+// export default IndexPage;

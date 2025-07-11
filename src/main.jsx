@@ -4,17 +4,17 @@ import "./index.css";
 import axios from "axios";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
-import { UserContextProvider } from "./UserContext"; // ✅ add this
+import { UserContextProvider } from "./UserContext"; 
+import "leaflet/dist/leaflet.css";
 
 axios.defaults.baseURL = "http://localhost:4000";
 axios.defaults.withCredentials = true;
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    
     <BrowserRouter>
       <UserContextProvider>
-        {" "}
-        {/* ✅ wrap your App */}
         <App />
       </UserContextProvider>
     </BrowserRouter>

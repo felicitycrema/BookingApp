@@ -1,0 +1,5 @@
+card1: background: #CC2D4A;
+
+card2: background: #BC1A6E;
+card3: background: #DE3151;
+card4: background: #D93B30;

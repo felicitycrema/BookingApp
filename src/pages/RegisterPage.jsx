@@ -6,24 +6,41 @@ const RegisterPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+ 
+  const [avatarFile, setAvatarFile] = useState(null);
+
 
   async function registerUser(ev) {
     ev.preventDefault();
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("password", password);
+    if (avatarFile) {
+      formData.append("avatar", avatarFile); // Must match backend multer field
+    };
+    formData.append("isAdmin", isAdmin);
+
     try {
-      const response = await axios.post("http://localhost:4000/register", {
-        name,
-        email,
-        password,
-      });
-      console.log("Registered successfully:", response.data);
+      const response = await axios.post(
+        "http://localhost:4000/register",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
+      );
       alert("Registration successful. Now you can log in");
-      // You can redirect or clear fields here
     } catch (error) {
       console.error("Registration error:", error);
       alert("Registration failed.");
     }
   }
-
+  
   return (
     <div className="mt-4 grow flex items-center justify-around py-20">
       <div className="mb-64 w-full max-w-md">
@@ -50,6 +67,23 @@ const RegisterPage = () => {
             placeholder="password"
             className="p-2 px-3 py-2 rounded-2xl border"
           />
+
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setAvatarFile(e.target.files[0])}
+            className="p-2 px-3 py-2 rounded-2xl border"
+          />
+
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={isAdmin}
+              onChange={(e) => setIsAdmin(e.target.checked)}
+            />
+            Register as Admin
+          </label>
+
           <button className="bg-blue-500 text-white px-4 py-2 rounded-2xl hover:bg-red-600">
             Register
           </button>
