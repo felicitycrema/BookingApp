@@ -95,6 +95,78 @@ Contributions are welcome! Open an issue or submit a pull request.
 📄 License
 MIT License — feel free to use and modify.
 
+
+project-root/
+│
+├── client/                            # Frontend React app (Vite or CRA)
+│   ├── public/                        # Public assets
+│   ├── src/
+│   │   ├── assets/                    # Static assets (images, icons, etc.)
+│   │   ├── components/                # Reusable UI components
+│   │   │   ├── Header.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── Layout.jsx
+│   │   │   └── HomePage.jsx
+│   │   ├── pages/                     # Route-level pages
+│   │   │   ├── AccountPage.jsx
+│   │   │   ├── BookingPage.jsx
+│   │   │   ├── BookingsPage.jsx
+│   │   │   ├── ForgotPasswordPage.jsx
+│   │   │   ├── IndexPage.jsx
+│   │   │   ├── LeaveReviewPage.jsx
+│   │   │   ├── LoginPage.jsx
+│   │   │   ├── MyReservations.jsx
+│   │   │   ├── PaymentPage.jsx
+│   │   │   ├── PlacePage.jsx
+│   │   │   ├── PlacesFormPage.jsx
+│   │   │   ├── PlacesPage.jsx
+│   │   │   ├── PlacesSearch.jsx
+│   │   │   ├── ProfilePage.jsx
+│   │   │   ├── RatingsPage.jsx
+│   │   │   ├── RegisterPage.jsx
+│   │   │   └── ResetPasswordPage.jsx
+│   │   ├── context/
+│   │   │   └── UserContext.jsx        # Auth/user context provider
+│   │   ├── hooks/                     # Custom hooks (if any)
+│   │   ├── styles/                    # Tailwind / global CSS
+│   │   ├── App.jsx                    # Main app component
+│   │   ├── main.jsx                   # Entry point (Vite)
+│   │   └── vite.config.js             # Vite config
+│   ├── package.json                   # React app config
+│
+├── api/                               # Express.js backend
+│   ├── controllers/                   # Controller logic
+│   ├── models/                        # Mongoose schemas
+│   ├── routes/                        # Express routes
+│   ├── middleware/                   # Auth, error handling, etc.
+│   ├── config/                        # DB config, Stripe keys
+│   ├── uploads/                       # Uploaded files (local only)
+│   ├── server.js                      # Main entry point
+│   ├── .env                           # Server environment variables
+│   └── package.json                   # Backend config
+│
+├── README.md                          # Project overview
+├── .gitignore                         # Ignored files
+└── package.json                       # Root-level (for concurrently)
+
+
+
+📦 Key Notes:
+🔗 client/src/components/
+Shared UI parts like Layout, Header, Footer, etc.
+
+🔐 pages/
+Each route component corresponds to a page in your App.jsx.
+
+🔁 context/UserContext.jsx
+Handles login, user data, token validation.
+
+⚙️ api/
+Follows MVC (Models, Controllers, Routes) for maintainability.
+
+Add auth.js, places.js, bookings.js, etc. inside routes/.
+
+
 ✨ Credits
-Inspired by Airbnb. Built with ❤️ by [Felicity Zitha].
+Inspired by Airbnb. Built with ❤️ by [Ms Felicity Zitha].
 

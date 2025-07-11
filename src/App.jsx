@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout.jsx";
-// import PageLayout from "./pages/PageLayout.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import ResetPasswordPage from "./pages/ResetPasswordPage.jsx";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage.jsx";
@@ -22,10 +21,6 @@ import MyReservations from "./pages/MyReservations.jsx";
 import LeaveReviewPage from "./pages/LeaveReviewPage.jsx";
 import RatingsPage from "./pages/RatingsPage.jsx";
 import PlacesSearch from "./pages/PlacesSearch.jsx";
-// import AirbnbPayment from "./pages/AirbnbPayment.jsx";
-
-// import HotelListingModal from "./modal/HotelListingModal.jsx";
-// import Footer from "./components/Footer.jsx";
 
 // axios.defaults.baseURL = "http://127.0.0.1:4000";
 // axios.defaults.withCredentials = true;
@@ -52,18 +47,12 @@ const App = () => {
           <Route path="/account/bookings/:id" element={<BookingPage />} />
           <Route path="/account/places" element={<PlacesPage />} />
           <Route path="/account/places/new" element={<PlacesFormPage />} />
-          {/* <Route path="/account/places/new" element={<HotelListingModal />} /> */}
           <Route path="/account/places/:id" element={<PlacesFormPage />} />
           <Route path="/place/:id" element={<PlacePage />} />
           <Route path="/places/:id" element={<PlacePage />} />
           <Route path="account/bookings" element={<BookingsPage />} />
           <Route path="account/bookings/:id" element={<BookingPage />} />
-          {/* <Route
-            path="account/bookings/:id/payment"
-            element={<AirbnbPayment />}
-          /> */}
           <Route path="/payment/:bookingId" element={<PaymentPage />} />
-          {/* <Route path="/account" element={<Footer />} />         */}
           <Route path="/account/my-reservations" element={<MyReservations />} />
           <Route
             path="/account/bookings/:bookingId/review"
